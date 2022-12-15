@@ -30,7 +30,7 @@ export default function App() {
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        axios.post("input/")
+        axios.post("input/", newAnt)
             .then(() => setNewAnt(initialState))
             .catch(error => console.log(error))
     }
