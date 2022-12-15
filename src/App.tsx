@@ -1,6 +1,8 @@
 import React, {FormEvent, useState} from 'react';
 import './App.css';
 import axios from "axios";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 type Ant = {
     name: string
@@ -21,11 +23,11 @@ export default function App() {
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const targetName = event.target.name
         const value = event.target.value
-    setNewAnt(  {
-        ...newAnt,
-        [targetName]: value
-        }
-    )
+        setNewAnt({
+                ...newAnt,
+                [targetName]: value
+            }
+        )
     }
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -33,6 +35,10 @@ export default function App() {
         axios.post("input/", newAnt)
             .then(() => setNewAnt(initialState))
             .catch(error => console.log(error))
+    }
+
+    const onClick = () => {
+        toast.error("Du hast mich geclickt!")
     }
 
     return (
@@ -47,8 +53,9 @@ export default function App() {
                 <p>{newAnt.name}</p>
                 <p>{newAnt.gender}</p>
                 <p>{newAnt.age}</p>
-
+                <button onClick={onClick}>Click me!</button>
             </header>
+            <ToastContainer closeButton={true} position="bottom-left" hideProgressBar={true} closeOnClick={true} autoClose={500}/>
         </div>
     );
 }
