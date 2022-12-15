@@ -2,7 +2,7 @@ import React, {FormEvent, useState} from 'react';
 import './App.css';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import "./Toastify.css";
 
 type Ant = {
     name: string
